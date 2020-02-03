@@ -24,5 +24,5 @@ Para utilizar GitHub y sus derivados, primero instalaremos **Git Bash** (64 bit)
 
 Despues de instalar git ahora vamos a descargar **GitHub Desktop** en este link [(Link de la página)](https://desktop.github.com/) lo cual va a ser muy sencillo, al instalarlo solo va a ser necesario elegir **Visual Studio Code** como predeterminado para abrir tus archivos 
 
-Esto se puede poner desde esta parte
-![Es esta opcion](../imgs/netcore.png)
+Esto se puede poner desde esta parte, si no esta ya seleccionado Visual Studio Code como se muestra en azul, entra a opciones en la opcion encerrada en rojo
+![Es esta opcion](../imgs/opcionVSC.png)
