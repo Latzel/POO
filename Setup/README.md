@@ -22,7 +22,9 @@ Despues de descargarlo, debes aceptar los terminos y buscar el lenguaje en el qu
 
 Para utilizar GitHub y sus derivados, primero instalaremos **Git Bash** (64 bit) [(Link de la página)](https://git-scm.com/) Aqui solo debo recomendarte que en las opciones al instalarlo cambies a **3rd party software** y las demas opciones aceptarlas como se muestran predertminadas.
 
-Despues de instalar git ahora vamos a descargar **GitHub Desktop** en este link [(Link de la página)](https://desktop.github.com/) lo cual va a ser muy sencillo, al instalarlo solo va a ser necesario elegir **Visual Studio Code** como predeterminado para abrir tus archivos 
+Despues de instalar git ahora vamos a descargar **GitHub Desktop** en este link [(Link de la página)](https://desktop.github.com/) lo cual va a ser muy sencillo, al instalarlo solo inicias sesión con tu cuenta de GitHub y al entrar te va a mostrar todos tus repositores los cuales puedes descargar para seguir modificandolos directo desde tu pc, para ello va a ser necesario elegir **Visual Studio Code** como predeterminado para abrir tus archivos.
 
 Esto se puede poner desde esta parte, si no esta ya seleccionado Visual Studio Code como se muestra en azul, entra a opciones en la opcion encerrada en rojo
 ![Es esta opcion](../imgs/opcionVSC.png)
+Despues de entrar a **Options** aparecera este menu, seleccionas la opcion **Advanced** como en la imagen y en donde dice **External Editor** solo debes buscar **Visual Studio Code** y lo seleccionas.
+![Es esta opcion](../imgs/opcionVSCpt2.png)
