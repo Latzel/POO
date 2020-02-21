@@ -9,6 +9,7 @@ namespace Peliculas
         private string pais;
         private string director;
 
+
         public string getTitulo(){
             return titulo;
         }
@@ -40,6 +41,17 @@ namespace Peliculas
             director=d;
         }
 
+        public peliculas(string t, int a, string p, string d){
+            titulo=t;
+            año=a;
+            pais=p;
+            director=d;
+        }
+
+        public void imprime(){
+        Console.WriteLine("{0}({1}) País: {2} Dirigida Por: {3}", getTitulo(), getAño(), getPais(), getDirector());
+        }
+
 
     }
 
@@ -47,21 +59,13 @@ namespace Peliculas
     {
         static void Main(string[] args)
         {
-            peliculas p1= new peliculas();
-            p1.setTitulo("Titanic");
-            p1.setAño(1997);
-            p1.setPais("Estados Unidos");
-            p1.setDirector("James Cameron");
-            Console.WriteLine("{0}({1}) Pais: {2} Dirgida Por {3}", p1.getTitulo(), p1.getAño(), p1.getPais(), p1.getDirector());
+            peliculas p1= new peliculas("Titanic",1997,"Estados Unidos","James Cameron");
+            p1.imprime();
 
-            peliculas p2= new peliculas();
-            p2.setTitulo("Forrest Gump");
-            p2.setAño(1994);
-            p2.setPais("Estados Unidos");
-            p2.setDirector("Robert Zemeckis");
-            Console.WriteLine("{0}({1}) Pais: {2} Dirigida Por {3}", p2.getTitulo(), p2.getAño(), p2.getPais(), p2.getDirector());
-            
-            
+            peliculas p2= new peliculas("Forrest Gump", 1994,"Estados Unidos","Robert Zemeckis");
+            p2.imprime();
+
+
             
         }
     }
