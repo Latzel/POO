@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Peliculas
 {
@@ -8,6 +9,8 @@ namespace Peliculas
         private int año;
         private string pais;
         private string director;
+        private string actores;
+        private int nacimiento;
 
 
         public string getTitulo(){
@@ -53,17 +56,34 @@ namespace Peliculas
         }
 
 
+        public peliculas(string act, int nac){
+            actores=act;
+            nacimiento=nac;
+        }
+
+        public void impActores(){
+            Console.WriteLine("Actor principal:{0}({1})",actores, nacimiento);
+        }
+
+
     }
 
     class Program
     {
         static void Main(string[] args)
         {
+            List<peliculas> pelis= new List<peliculas>();
+
+            pelis.Add(new peliculas ("Leonardo DiCaprio", 1974));
+            pelis.Add(new peliculas ("Tom Hanks", 1956));
+
             peliculas p1= new peliculas("Titanic",1997,"Estados Unidos","James Cameron");
             p1.imprime();
+            pelis[0].impActores();
 
             peliculas p2= new peliculas("Forrest Gump", 1994,"Estados Unidos","Robert Zemeckis");
-            p2.imprime();
+            p2.imprime(); 
+            pelis[1].impActores();
 
 
             
