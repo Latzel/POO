@@ -9,3 +9,7 @@
 [Tarea3/Lista de Peliculas](./ListaPeliculas)
 
 [Tarea4/List Actores](./Peliculas)
+
+[Tarea5]
+
+[Tarea 6/Parametros](./Parametros)
