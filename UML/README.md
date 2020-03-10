@@ -17,4 +17,4 @@ lista de los libros que ha escrito. En caso de que haya traducciones o reedicion
 se consideran como el mismo libro. 
 OPCIONAL: Podemos indicar si un libro se lo prestamos a un amigo, desde que fecha y
 tenemos su correo para recordarle que nos lo regrese."
-!(../imgs/UML3.pgn)
+![Anexo](../imgs/UML3.png)
