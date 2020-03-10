@@ -1,10 +1,10 @@
 # Ejercicios UML
 
 ## 1.Agrega la cardinalidad o multiplicidad para las asociaciones del siguiente diagrama de clases, justifica tus decisiones:
-![Anexo](../imgs/UML1.pdf)
+//![Anexo](../imgs/UML1.pdf)
 
 ## 2. Completa los tipos de asociación (Agregación y Composición) y multiplicidad que hay entre las clases siguientes y explica porque es de ese tipo.
-![Anexo](../imgs/UML2.pdf)
+//![Anexo](../imgs/UML2.pdf)
 
 ## 3. Haz el diagrama de clases del siguiente sistema:
 "Nos piden hacer una aplicación para llevar una bitácora de los libros
