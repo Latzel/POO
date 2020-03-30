@@ -13,3 +13,5 @@
 [Tarea5/UML](./UML)
 
 [Tarea 6/Parametros](./Parametros/Program.cs)
+
+[Domino](./Domino/Program.cs)
