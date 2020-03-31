@@ -13,6 +13,10 @@ namespace Domino
             den=denominador;
         }
 
+        public void imprime(){
+            Console.WriteLine("{0}/{1}",num, den);
+        }
+
         public static int operator +(Ficha a, Ficha b){
 
             return a.num + a.den + b.num + b.den; //Aqui no use un "new algo" porque voy a regresar solo un numero
@@ -26,6 +30,9 @@ namespace Domino
         {
             Ficha a= new Ficha(3,4);
             Ficha b= new Ficha(4,1);
+
+            a.imprime();
+            b.imprime();
 
             Console.WriteLine(a+b);
         }
