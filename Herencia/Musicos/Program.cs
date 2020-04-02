@@ -11,16 +11,16 @@ namespace Musicos
             nombre=n;
         }
 
-        public void afina(){
+        public virtual void afina(){
             Console.WriteLine("Denme un segundo");
 
         }
 
-        public void saluda(){
+        public virtual void saluda(){
             Console.WriteLine("Hola a todos! Aqui {0}", nombre);
         }
 
-        public void toca(){
+        public virtual void toca(){
             Console.WriteLine("Vamos a darle!");
         }
 
@@ -34,16 +34,16 @@ namespace Musicos
             this.bateria=bateria;
         }
 
-        public new void afina(){
+        public override void afina(){
             Console.WriteLine("Batumps!");
 
         }
 
-        public new void saluda(){
+        public override void saluda(){
             Console.WriteLine("Aqui {0} mi bateria es {1}",nombre, bateria);
         }
 
-        public new void toca(){
+        public override void toca(){
             Console.WriteLine("Pum! Pum! Pum!");
         }
     }
@@ -55,16 +55,16 @@ namespace Musicos
             bajo=b;
         }
         
-        public new void afina(){
+        public override void afina(){
             Console.WriteLine("Tum...");
 
         }
 
-        public new void saluda(){
+        public override void saluda(){
             Console.WriteLine("Aqui {0} mi bajo es un {1}",nombre, bajo);
         }
 
-        public new void toca(){
+        public override void toca(){
             Console.WriteLine("Tan tan");
         }
     }
@@ -76,16 +76,16 @@ namespace Musicos
             guitarra=g;
         }
 
-        public new void afina(){
+        public override void afina(){
             Console.WriteLine("Pam Pam Pam");
 
         }
 
-        public new void saluda(){
+        public override void saluda(){
             Console.WriteLine("Yo soy {0} mi guitarra es {1} y nosotros somos Hombres P",nombre, guitarra);
         }
 
-        public new void toca(){
+        public override void toca(){
             Console.WriteLine("Pam Pam tananananana pam pam");
         }
     }
