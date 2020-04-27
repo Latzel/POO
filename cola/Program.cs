@@ -45,12 +45,12 @@ public class cola<T>
 
       m_StackPointer--;
 
-      if(m_StackPointer > 0)
+      if(m_StackPointer >= 0)
 
       {
 
         T item = m_Items[0];
-        for (int i=1; i< m_StackPointer; i++){
+        for (int i=0; i> m_StackPointer; i++){
 
             m_Items[i-1]=m_Items[i];
         }
@@ -82,13 +82,11 @@ class Program
         pila.Push("3");
         pila.Push("4");
         pila.Push("5");
-        
 
         foreach(var item in pila.m_Items)
             Console.WriteLine(item);
 
-        Console.WriteLine(pila.Pop());
-
+        pila.Pop();  
          
          foreach(var item in pila.m_Items)
             Console.WriteLine(item);
