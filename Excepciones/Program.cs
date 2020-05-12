@@ -2,6 +2,14 @@
 
 namespace Excepciones //capturaedad
 {
+
+    class EdadOverFlowException : Exception
+    {
+        public EdadOverFlowException():base("Edad no valida")
+        {  
+        }
+    }
+    
     class Program
     {
         static void Main(string[] args)
@@ -10,9 +18,15 @@ namespace Excepciones //capturaedad
 
             int edad = -1;
             bool conexion=true;
+
             try{
                 edad = Int16.Parse(Console.ReadLine());
-                edad = edad/0;
+                //edad = edad/0;
+                if (edad > 130)
+                    {
+                        edad= -1;
+                    throw new EdadOverFlowException();
+                    }
                 conexion= false;
                 
             }
@@ -25,6 +39,11 @@ namespace Excepciones //capturaedad
             catch(OverflowException ){
                 Console.WriteLine("Hey! Una edad a 1000 por favor");
 
+            }
+
+            catch (EdadOverFlowException o){
+                Console.WriteLine("Hey! Una edad a 130 por favor");
+                Console.WriteLine(o.StackTrace);
             }
 
             catch (Exception e){
