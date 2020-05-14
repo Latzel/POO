@@ -1,0 +1,5 @@
+SDF|Telefono OnePlus 7t|1234.22
+SDb|Telefono OnePlus 6t|1554.22
+SaF|Telefono OnePlus 8t|1674.22
+RDF|Telefono OnePlus 6|2134.22
+SDG|Telefono OnePlus 9t|2235.22
