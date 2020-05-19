@@ -1,0 +1,12 @@
+[
+    {
+        "Date": "2020-05-19T12:35:44.5721479-07:00",
+        "TemperatureCelsius": 21,
+        "Summary": "Cloudy"
+    },
+    {
+        "Date": "2020-05-18T12:00:00-05:00",
+        "TemperatureCelsius": 18,
+        "Summary": "sunny"
+    }
+]
