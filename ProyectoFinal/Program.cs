@@ -147,9 +147,7 @@ namespace ProyectoFinal
             //foreach(Product p in products)
             //Console.WriteLine(p.Departamento);
 
-             if(p.Departamento = valor){
-                Console.WriteLine(p.Departamento);
-            }
+
         }
     }
 }
