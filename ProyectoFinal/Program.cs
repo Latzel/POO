@@ -35,6 +35,8 @@ namespace ProyectoFinal
             return String.Format("Codigo: {0} Descripcion: {1}  Dpto: {2} Likes: {3} Precio: {4}", Codigo, Descripcion, Departamento, Likes, Precio); //Precio aqui
         }
 
+        public List<PrecioFecha> Precios = new List<PrecioFecha>();
+
 
     }
 
@@ -51,6 +53,7 @@ namespace ProyectoFinal
             }
 
             txtOut.Close();
+
         }
 
     
@@ -70,19 +73,19 @@ namespace ProyectoFinal
 
             return products;
 
-            
-        /* static void GetDepartamento (int depa) //VARIABLE ERROR
-        {
-            IEnumerable<Product> Producto = from p in products
-            where p.Departamento == depa
-            select p;
 
+        static void GetDepartamento(int depa) //VARIABLE ERROR
+        {
+           IEnumerable<Product> Producto = from p in products
+           where p.Departamento == depa
+           select p;
             Console.WriteLine("El producto pertenece al departamento: "+depa);
-        }
-        */
             
         }
         
+
+        }
+    
     
     }
 
@@ -112,9 +115,6 @@ namespace ProyectoFinal
 
             foreach(Product p in products)
                 Console.WriteLine(p);
-            
-            
-            
         }
     }
 }
