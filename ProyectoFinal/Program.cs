@@ -72,19 +72,35 @@ namespace ProyectoFinal
             }
 
             return products;
+        }
+        
+        public static List<Product> ReadFromTXT111(string path)
+        {
+            List<Product> products = new List<Product>();
+            StreamReader txtIn = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read));
+
+            while(txtIn.Peek()!=-1)
+            {
+                string line = txtIn.ReadLine();
+                string[] columns = line.Split('|');
+                Product p = new Product(columns[0],columns[1], int.Parse(columns[2]), int.Parse(columns[3]), Double.Parse(columns[4])); //Pecio aqui
+                products.Add(p);
+            }
+
+            return products;
+        }
 
 
-        static void GetDepartamento(int depa) //VARIABLE ERROR
+/*
+        public static List<Product> GetDepartamento(string depa) //VARIABLE ERROR
         {
            IEnumerable<Product> Producto = from p in products
            where p.Departamento == depa
            select p;
             Console.WriteLine("El producto pertenece al departamento: "+depa);
             
-        }
-        
-
-        }
+        }    
+*/
     
     
     }
@@ -106,7 +122,7 @@ namespace ProyectoFinal
             products.Add(new Product("AAA","Telefono OnePlus 5t", 2, 155, 1900.99));
             products.Add(new Product("BBB","Telefono OnePlus 6t", 1, 154, 4500.99));
             products.Add(new Product("CCC","Telefono OnePlus 7t", 5, 153, 2300.99));
-            products.Add(new Product("DDD","Telefono OnePlus 8t", 4, 152, 2900.99));
+            products.Add(new Product("DDD","Telefono OnePlus 8t", 2, 152, 2900.99));
             products.Add(new Product("EEE","Telefono OnePlus 9t", 3, 151, 2000.99));
             
             ProductDB.WriteToTXT(@"C:\Users\axeld\Desktop\productos.txt", products);
@@ -115,6 +131,25 @@ namespace ProyectoFinal
 
             foreach(Product p in products)
                 Console.WriteLine(p);
+                
+            //ProductDB.GetDepartamento(@"C:\Users\axeld\Desktop\productos.txt", products);
+
+            products = ProductDB.ReadFromTXT(@"C:\Users\axeld\Desktop\productos.txt");
+            products = ProductDB.ReadFromTXT111(@"C:\Users\axeld\Desktop\productos.txt");
+
+            //Pedir valor que se va a usar para el dpto
+            Console.WriteLine("Que departamento deseas buscar?");
+            int valor = 0;
+            valor = Int16.Parse(Console.ReadLine());
+
+            Console.WriteLine("Los productos dentro del departamento {} son:",valor);
+
+            //foreach(Product p in products)
+            //Console.WriteLine(p.Departamento);
+
+             if(p.Departamento = valor){
+                Console.WriteLine(p.Departamento);
+            }
         }
     }
 }
