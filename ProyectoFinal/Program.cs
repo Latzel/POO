@@ -56,12 +56,14 @@ namespace ProyectoFinal
             }
             return RetPrec;
         }  
-/*
-        public static List<Product> AcomodaLikes(List<Product> products) //AQUI VOY
+
+        public static List<Product> AcomodaLikes() //AQUI VOY *Aun debes llamarlo bien
         {
-            List
+            IEnumerable<Product> OrdenaLikes = products.OrderBy(lk => lk.Precio);
+            foreach(Product lk in OrdenaLikes){
+                Console.WriteLine(lk);
+            }
         } 
-*/
 
     }
 
@@ -129,7 +131,7 @@ namespace ProyectoFinal
 
             products = ProductDB.ReadFromTXT(@"C:\Users\axeld\Desktop\productos.txt");
 
-            Console.WriteLine("Que accion deseas realizar? \n 1) Buscar por departamento \n 2) Buscar por medio de codigo");
+            Console.WriteLine("Que accion deseas realizar? \n 1) Buscar por departamento \n 2) Buscar por medio de codigo \n 3) Ordenar de acuerdo a los likes del producto");
             try{
                 int caseSwitch = Int16.Parse(Console.ReadLine());
         
@@ -156,7 +158,9 @@ namespace ProyectoFinal
             break;     
 
                 case 3:
-                 Product.AcomodaLikes();
+            Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:")
+            List<Product> lk = Product.AcomodaLikes();
+            break;
 
             }
 
