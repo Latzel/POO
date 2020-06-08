@@ -64,8 +64,8 @@ namespace ProyectoFinal
         public static List<Product> AcomodaLikes(List<Product> products)
         {
             List<Product> orden = new List<Product>();
-            orden.OrderBy(lk => lk.Likes);
-            foreach(Product p in products){
+            products.OrderBy(lk => lk.Likes);
+            foreach(Product p in orden){
             orden.Add(p);
             }
             return orden;
@@ -129,12 +129,11 @@ namespace ProyectoFinal
             
             ProductDB.WriteToTXT(@"C:\Users\axeld\Desktop\pppproductos.txt", products);
     
-            products = ProductDB.ReadFromTXT(@".\productos.txt");
+            //products = ProductDB.ReadFromTXT(@".\pppproductos.txt");
 
             foreach(Product p in products)
                 Console.WriteLine(p);
                 
-            //ProductDB.GetDepartamento(@"C:\Users\axeld\Desktop\productos.txt", products);
 
             products = ProductDB.ReadFromTXT(@"C:\Users\axeld\Desktop\pppproductos.txt");
 
@@ -151,7 +150,7 @@ namespace ProyectoFinal
             Console.WriteLine("Los productos dentro de ese departamento departamento son: ");
             foreach(Product p in val)  
             Console.WriteLine(p);
-                }//Numero diferente a 1,2,3
+                }
                 catch (FormatException fe ){
                 Console.WriteLine("Digite unicamente numeros (Procurre que sean enteros)");
                 Console.WriteLine(fe.Message);
@@ -171,13 +170,14 @@ namespace ProyectoFinal
                 try{
             Console.WriteLine("Por favor añada el codigo del producto el cual desea conocer su precio");
             List<Product> cod = Product.GetPrecio(Console.ReadLine(), products);
-            Console.WriteLine("El precio de su producto es de: ");
+            //Console.WriteLine("El precio de su producto es de: ");
             foreach(Product p in cod)
             {
-                if(!p.Codigo.Contains(p.Codigo)){
-                    Console.WriteLine("Error, no existe producto con tal codigo");
+                if(p.Codigo.Contains(p.Codigo)){
+                    Console.WriteLine("El precio del producto {0}-{1} es de: {2}$",p.Codigo, p.Descripcion, p.Precio);              
                 } else{
-                    Console.WriteLine("El precio del producto {0}-{1} es de: {2}$",p.Codigo, p.Descripcion, p.Precio);
+                    Console.WriteLine("Error, no existe producto con tal codigo"); //Porque no siempre aparece
+                    
                 }
             }
             //Console.WriteLine("El precio del producto {0}-{1} es de: {2}$",p.Codigo, p.Descripcion, p.Precio);
@@ -188,18 +188,23 @@ namespace ProyectoFinal
             }
             break;     
 
-                case 3:
+                case 3: //El metodo se realizo en main
 
-            Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:");
-            List<Product> or = Product.AcomodaLikes(products);
-            foreach(Product p in or)
-            Console.WriteLine(p);
+            //Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:");
+            //List<Product> or = Product.AcomodaLikes();
+            //foreach(Product p in or)
+            //Console.WriteLine(p);
 
             //products.OrderBy(lk => lk.Likes);
             //foreach(Product p in products)
             //Console.WriteLine(p);
             //Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:");
             
+            Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:");
+            var ordena = products.OrderBy(x => x.Likes);
+            foreach(Product p in ordena)
+                Console.WriteLine(p);
+
             break;
 
             }
