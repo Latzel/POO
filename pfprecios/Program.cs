@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProyectoFinal
+namespace pfprecios
 {
     class Product
     {
@@ -53,10 +53,10 @@ namespace ProyectoFinal
             {
                 if(p.Codigo == prec){
                 RetPrec.Add(p);
-                }//else
-               // {
-                   // Console.WriteLine("Error, no existe producto con tal codigo");
-               // }
+                }else
+                {
+                    Console.WriteLine("Error, no existe producto con tal codigo");
+                }
             }
             return RetPrec;
         }  
@@ -93,7 +93,7 @@ namespace ProyectoFinal
         public static List<Product> ReadFromTXT(string path)
         {
             List<Product> products = new List<Product>();
-            StreamReader txtIn = new StreamReader(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read));
+            StreamReader txtIn = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read));
 
             while(txtIn.Peek()!=-1)
             {
@@ -121,22 +121,22 @@ namespace ProyectoFinal
         {
             List<Product> products = new List<Product>();
             
-            products.Add(new Product("AAA","Telefono OnePlus 5t", 2, 160, 1900.99));
-            products.Add(new Product("BBB","Telefono OnePlus 6t", 1, 154, 4500.99));
-            products.Add(new Product("CCC","Telefono OnePlus 7t", 2, 176, 2300.99));
-            products.Add(new Product("DDD","Telefono OnePlus 8t", 3, 189, 2900.99));
-            products.Add(new Product("EEE","Telefono OnePlus 9t", 1, 121, 2000.99));
+            products.Add(new Product("AAA","Telefono OnePlus 5t", 2, 235, 1900.99));
+            products.Add(new Product("BBB","Telefono OnePlus 6t", 1, 2254, 4500.99));
+            products.Add(new Product("CCC","Telefono OnePlus 7t", 2, 543, 2300.99));
+            products.Add(new Product("DDD","Telefono OnePlus 8t", 3, 562, 2900.99));
+            products.Add(new Product("EEE","Telefono OnePlus 9t", 1, 761, 2000.99));
             
-            ProductDB.WriteToTXT(@"C:\Users\axeld\Desktop\pppproductos.txt", products);
+            ProductDB.WriteToTXT(@"C:\Users\axeld\Desktop\productos.txt", products);
     
-            products = ProductDB.ReadFromTXT(@".\productos.txt");
+            //products = ProductDB.ReadFromTXT(@".\productos.txt");
 
             foreach(Product p in products)
                 Console.WriteLine(p);
                 
             //ProductDB.GetDepartamento(@"C:\Users\axeld\Desktop\productos.txt", products);
 
-            products = ProductDB.ReadFromTXT(@"C:\Users\axeld\Desktop\pppproductos.txt");
+            products = ProductDB.ReadFromTXT(@"C:\Users\axeld\Desktop\productos.txt");
 
             Console.WriteLine("Que accion deseas realizar? \n 1) Buscar por departamento \n 2) Buscar por medio de codigo \n 3) Ordenar de acuerdo a los likes del producto");
             try{
@@ -173,15 +173,13 @@ namespace ProyectoFinal
             List<Product> cod = Product.GetPrecio(Console.ReadLine(), products);
             Console.WriteLine("El precio de su producto es de: ");
             foreach(Product p in cod)
-            {
-                if(!p.Codigo.Contains(p.Codigo)){
-                    Console.WriteLine("Error, no existe producto con tal codigo");
-                } else{
-                    Console.WriteLine("El precio del producto {0}-{1} es de: {2}$",p.Codigo, p.Descripcion, p.Precio);
-                }
-            }
-            //Console.WriteLine("El precio del producto {0}-{1} es de: {2}$",p.Codigo, p.Descripcion, p.Precio);
+            Console.WriteLine("El precio del producto {0}-{1} es de: {2}$",p.Codigo, p.Descripcion, p.Precio);
                 }//Codigo de 3 letras "XXX"
+                catch (FormatException fe ){
+                Console.WriteLine("Digite unicamente numeros (Procurre que sean enteros)");
+                Console.WriteLine(fe.Message);
+            }
+
             catch (OverflowException ov ){
                 Console.WriteLine("Utilice unicamente la cantidad necesaria de digitos");
                 Console.WriteLine(ov.Message);
