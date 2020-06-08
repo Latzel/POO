@@ -33,7 +33,7 @@ namespace ProyectoFinal
             return String.Format("Codigo: {0} Descripcion: {1}  Dpto: {2} Likes: {3} Precio: {4}", Codigo, Descripcion, Departamento, Likes, Precio); //Precio aqui
         }
 
-        public List<PrecioFecha> Precios = new List<PrecioFecha>();
+        public List<PrecioFecha> Precios = new List<PrecioFecha>(); //ListaPrecios por si se hace
 
         public static List<Product> GetDepartamento(int depa, List<Product> products)
         {
@@ -51,20 +51,26 @@ namespace ProyectoFinal
             List<Product> RetPrec = new List<Product>();
             foreach(Product p in products)
             {
-                if(p.Codigo == prec)
+                if(p.Codigo == prec){
                 RetPrec.Add(p);
+                }else
+                {
+                    Console.WriteLine("Error, no existe producto con tal codigo");
+                }
             }
             return RetPrec;
         }  
 
-        public static List<Product> AcomodaLikes() //AQUI VOY *Aun debes llamarlo bien
+        public static List<Product> AcomodaLikes(List<Product> products)
         {
-            IEnumerable<Product> OrdenaLikes = products.OrderBy(lk => lk.Precio);
-            foreach(Product lk in OrdenaLikes){
-                Console.WriteLine(lk);
+            List<Product> orden = new List<Product>();
+            orden.OrderBy(lk => lk.Likes);
+            foreach(Product p in products){
+            orden.Add(p);
             }
-        } 
-
+            return orden;
+        }
+        
     }
 
     class ProductDB
@@ -99,6 +105,7 @@ namespace ProyectoFinal
 
             return products;
         }
+
     }
 
     class PrecioFecha
@@ -138,37 +145,76 @@ namespace ProyectoFinal
             switch(caseSwitch)
             {
                 case 1: //Caso donde se obtienen los productos de cada departamento
-                //try{
+                try{
             Console.WriteLine("Que departamento deseas buscar? \n 1)Telefonos \n 2)Computadoras \n 3)Televisores");
             List<Product> val = Product.GetDepartamento(Int16.Parse(Console.ReadLine()), products);
             Console.WriteLine("Los productos dentro de ese departamento departamento son: ");
             foreach(Product p in val)  
             Console.WriteLine(p);
-                //}catch () //Numero diferente a 1,2,3
+                }//Numero diferente a 1,2,3
+                catch (FormatException fe ){
+                Console.WriteLine("Digite unicamente numeros (Procurre que sean enteros)");
+                Console.WriteLine(fe.Message);
+            }
+
+            catch (OverflowException ov ){
+                Console.WriteLine("Utilice unicamente la cantidad necesaria de digitos");
+                Console.WriteLine(ov.Message);
+            }
+
+            catch (Exception){
+                Console.WriteLine("Epale, como le hiciste para equivocarte tan machin?");
+            }
             break;
 
                 case 2: //Caso donde se obtien el precio de cada prouducto
-                //try{
+                try{
             Console.WriteLine("Por favor añada el codigo del producto el cual desea conocer su precio");
             List<Product> cod = Product.GetPrecio(Console.ReadLine(), products);
             Console.WriteLine("El precio de su producto es de: ");
             foreach(Product p in cod)
             Console.WriteLine("El precio del producto {0}-{1} es de: {2}$",p.Codigo, p.Descripcion, p.Precio);
-                //}catch () //Codigo de 3 letras "XXX"
+                }//Codigo de 3 letras "XXX"
+                catch (FormatException fe ){
+                Console.WriteLine("Digite unicamente numeros (Procurre que sean enteros)");
+                Console.WriteLine(fe.Message);
+            }
+
+            catch (OverflowException ov ){
+                Console.WriteLine("Utilice unicamente la cantidad necesaria de digitos");
+                Console.WriteLine(ov.Message);
+            }
             break;     
 
                 case 3:
-            Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:")
-            List<Product> lk = Product.AcomodaLikes();
+
+            Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:");
+            List<Product> or = Product.AcomodaLikes(products);
+            foreach(Product p in or)
+            Console.WriteLine(p);
+
+            //products.OrderBy(lk => lk.Likes);
+            //foreach(Product p in products)
+            //Console.WriteLine(p);
+            //Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:");
+            
             break;
 
             }
 
              }catch (FormatException fe ){
-                Console.WriteLine("Digite unicamente numeros");
+                Console.WriteLine("Digite unicamente numeros (Procurre que sean enteros)");
                 Console.WriteLine(fe.Message);
             }
 
+            catch (OverflowException ov ){
+                Console.WriteLine("Utilice unicamente la cantidad necesaria de digitos");
+                Console.WriteLine(ov.Message);
+            }
+
+            catch (Exception){
+                Console.WriteLine("Epale, como le hiciste para equivocarte tan machin?");
+            }
         }
     }
 
