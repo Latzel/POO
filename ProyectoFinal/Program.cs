@@ -7,7 +7,7 @@ namespace ProyectoFinal
 {
     class Product
     {
-        public Product(string c, string d, int dep, int l, Double p){ //Acuerdate de quitar la p
+        public Product(string c, string d, int dep, int l, Double p){ //constructor producto
             Codigo=c;
             Descripcion=d;
             Precio=p; //PRECIO ALTERNATIVO AXEL
@@ -35,7 +35,7 @@ namespace ProyectoFinal
 
         public List<PrecioFecha> Precios = new List<PrecioFecha>(); //ListaPrecios por si se hace
 
-        public static List<Product> GetDepartamento(int depa, List<Product> products)
+        public static List<Product> GetDepartamento(int depa, List<Product> products) //Metodo Getprecio
         {
             List<Product> RetDepa = new List<Product>();
             foreach(Product p in products)
@@ -46,7 +46,7 @@ namespace ProyectoFinal
             return RetDepa;
         }
 
-        public static List<Product> GetPrecio(string prec, List<Product> products) 
+        public static List<Product> GetPrecio(string prec, List<Product> products) //Metodo Getprecio
         {
             List<Product> RetPrec = new List<Product>();
             foreach(Product p in products)
@@ -55,13 +55,13 @@ namespace ProyectoFinal
                 RetPrec.Add(p);
                 }//else
                // {
-                   // Console.WriteLine("Error, no existe producto con tal codigo");
+                   // Console.WriteLine("Error, no existe producto con tal codigo"); **Al llamarlo desde aqui imprime 5 veces mas el mensaje**
                // }
             }
             return RetPrec;
         }  
 
-        public static List<Product> AcomodaLikes(List<Product> products)
+        public static List<Product> AcomodaLikes(List<Product> products) //El metodo desde aqui no hacia nada pero al parecer estaba bien
         {
             List<Product> orden = new List<Product>();
             products.OrderBy(lk => lk.Likes);
@@ -75,14 +75,14 @@ namespace ProyectoFinal
 
     class ProductDB
     {
-        public static void WriteToTXT (string path, List <Product> products)
+        public static void WriteToTXT (string path, List <Product> products) //Escribe en txt
         {
             StreamWriter txtOut = new StreamWriter(
                 new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)); 
             
             foreach(Product p in products)
             {
-                txtOut.WriteLine("{0}|{1}|{2}|{3}|{4}", p.Codigo, p.Descripcion, p.Departamento, p.Likes, p.Precio);//Precio aqui
+                txtOut.WriteLine("{0}|{1}|{2}|{3}|{4}", p.Codigo, p.Descripcion, p.Departamento, p.Likes, p.Precio);
             }
 
             txtOut.Close();
@@ -90,7 +90,7 @@ namespace ProyectoFinal
         }
   
 
-        public static List<Product> ReadFromTXT(string path)
+        public static List<Product> ReadFromTXT(string path) 
         {
             List<Product> products = new List<Product>();
             StreamReader txtIn = new StreamReader(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read));
@@ -181,7 +181,7 @@ namespace ProyectoFinal
                 }
             }
             //Console.WriteLine("El precio del producto {0}-{1} es de: {2}$",p.Codigo, p.Descripcion, p.Precio);
-                }//Codigo de 3 letras "XXX"
+                }
             catch (OverflowException ov ){
                 Console.WriteLine("Utilice unicamente la cantidad necesaria de digitos");
                 Console.WriteLine(ov.Message);
@@ -197,10 +197,10 @@ namespace ProyectoFinal
 
             //products.OrderBy(lk => lk.Likes);
             //foreach(Product p in products)
-            //Console.WriteLine(p);
+            //ConsoleWriteLine(p);
             //Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:");
             
-            Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:");
+            Console.WriteLine("Los siguientes productos estan acomodados de menor a mayor:"); //Este fue el unico que funciono
             var ordena = products.OrderBy(x => x.Likes);
             foreach(Product p in ordena)
                 Console.WriteLine(p);
