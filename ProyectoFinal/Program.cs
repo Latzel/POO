@@ -10,7 +10,7 @@ namespace ProyectoFinal
         public Product(string c, string d, int dep, int l, Double p){ //constructor producto
             Codigo=c;
             Descripcion=d;
-            Precio=p; //PRECIO ALTERNATIVO AXEL
+            Precio=p;
             Departamento = dep;
             Likes=l;
             
@@ -30,7 +30,7 @@ namespace ProyectoFinal
         public int Departamento {get; set;}
 
         public override string ToString(){
-            return String.Format("Codigo: {0} Descripcion: {1}  Dpto: {2} Likes: {3} Precio: {4}", Codigo, Descripcion, Departamento, Likes, Precio); //Precio aqui
+            return String.Format("Codigo: {0} Descripcion: {1}  Dpto: {2} Likes: {3} Precio: {4}", Codigo, Descripcion, Departamento, Likes, Precio);
         }
 
         public List<PrecioFecha> Precios = new List<PrecioFecha>(); //ListaPrecios por si se hace
@@ -40,8 +40,11 @@ namespace ProyectoFinal
             List<Product> RetDepa = new List<Product>();
             foreach(Product p in products)
             {
-                if(p.Departamento == depa)
+                if(p.Departamento == depa){
                 RetDepa.Add(p);
+                }else{
+                    Console.WriteLine("Error, no existe tal departamento");
+                }
             }
             return RetDepa;
         }
